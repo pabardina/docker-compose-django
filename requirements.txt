@@ -1,0 +1,5 @@
+django
+gunicorn
+psycopg2
+git+https://github.com/sebleier/django-redis-cache
+celery[redis]

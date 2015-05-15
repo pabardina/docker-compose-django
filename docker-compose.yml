@@ -1,0 +1,36 @@
+db:
+  image: jamesbrink/postgresql
+  environment:
+    - SCHEMA=exemple
+    - USER=exemple
+    - PASSWORD=password
+    - POSTGIS=true
+
+rediscache:
+  image: redis:latest
+
+rediscelery:
+  image: redis:latest
+  volumes:
+    - ./docker_config/data:/data
+
+app:
+  build: .
+  command: /usr/bin/supervisord -n
+  volumes:
+    - ./docker_config/supervisor.conf:/etc/supervisor/conf.d/myconf.conf
+    - .:/code
+  links:
+    - db
+    - rediscache
+    - rediscelery
+
+nginx:
+  image: nginx:latest
+  volumes:
+    - ./docker_config/anikit.nginx:/etc/nginx/nginx.conf
+    - ./exemple/var:/root
+  ports:
+    - "80:80"
+  links:
+    - app
