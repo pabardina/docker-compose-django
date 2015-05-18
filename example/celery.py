@@ -8,9 +8,9 @@ from django.conf import settings
 import django
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'exemple.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'example.settings')
 
-app = Celery('exemple')
+app = Celery('example')
 app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 

@@ -18,5 +18,3 @@ ADD docker_config/supervisor.conf /etc/supervisor/conf.d/myconf.conf
 ADD requirements.txt /code/requirements.txt
 
 RUN pip install -r /code/requirements.txt
-
-EXPOSE 8001 8002

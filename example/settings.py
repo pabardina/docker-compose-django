@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -36,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,9 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'exemple.urls'
+ROOT_URLCONF = 'example.urls'
 
-WSGI_APPLICATION = 'exemple.wsgi.application'
+WSGI_APPLICATION = 'example.wsgi.application'
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
@@ -70,13 +72,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = "/data/app/static"
 
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-         'NAME': 'exemple',
-         'USER': 'exemple',
+         'NAME': 'example',
+         'USER': 'example',
          'PASSWORD': 'password',
          'HOST': 'db',
          'PORT': 5432,
