@@ -19,7 +19,9 @@ app:
   command: /usr/bin/supervisord -n
   volumes:
     - ./docker_config/supervisor.conf:/etc/supervisor/conf.d/myconf.conf
-    - .:/code
+    - ./docker_config/start.sh:/code/start.sh
+    - ./docker_config/start_cel.sh:/code/start_cel.sh
+    - ./project:/code
   volumes_from:
     - data
   links:
