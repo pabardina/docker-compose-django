@@ -15,9 +15,6 @@ RUN easy_install pip
 RUN mkdir -p /var/log/supervisor /etc/supervisor/conf.d
 ADD docker_config/supervisor.conf /etc/supervisor/conf.d/myconf.conf
 
-ADD docker_config/start.sh /code/start.sh
-ADD docker_config/start_cel.sh /code/start_cel.sh
-
 ADD requirements.txt /code/requirements.txt
 
 RUN pip install -r /code/requirements.txt
